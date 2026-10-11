@@ -1,0 +1,41 @@
+[project]
+name = "semfield-watermark"
+version = "0.1.0"
+description = "Semantic random-field watermark generation and calibrated detection"
+readme = "README.md"
+license = "MIT"
+requires-python = ">=3.10"
+dependencies = [
+    "numpy>=1.24",
+]
+
+[project.optional-dependencies]
+# Encoder models and public text corpora.
+embed = [
+    "sentence-transformers>=2.2",
+    "datasets>=2.14",
+    "nltk>=3.8",
+]
+# vLLM supports a narrower set of platforms and accelerators than the core
+# package; install it in the interpreter used by the generation worker.
+generation = [
+    "vllm>=0.6",
+]
+# Optional dependencies for the SemStamp and k-SemStamp reference baselines.
+baselines = [
+    "scikit-learn>=1.3",
+    "scipy>=1.10",
+]
+quality = [
+    "mauve-text==0.4.0",
+    "nltk>=3.8",
+    "torch>=2.1",
+    "transformers>=4.45",
+]
+
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+packages = ["semfield"]
